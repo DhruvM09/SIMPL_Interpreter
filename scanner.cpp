@@ -6,14 +6,13 @@
 std::vector<Token> Scanner::scanlines(std::vector<std::string> & lines){
     
     std::vector<Token> tokens;
-    
+
     for(std::string line : lines){
         lineNumber++;
         currentLine = line;
         std::vector<Token> temp = Scanner::scanline();
         for(Token t : temp)tokens.push_back(t);
     }
-
     return tokens;
 
 }
@@ -91,8 +90,9 @@ std::vector<Token> Scanner::scanline(){
         case '}':
             tokens.push_back(CreateTokenSymbol(RIGHT_PARA,lineNumber));
         break;
-
-
+        case ';':
+            tokens.push_back(CreateTokenSymbol(SEMICOLON , lineNumber));
+        break;
 
         case '\0':
         case '\n':

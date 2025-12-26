@@ -1,6 +1,6 @@
+#pragma once
 #include <string>
 #include <map>
-#pragma once
 
 enum TokenType{
     PLUS,
@@ -19,6 +19,7 @@ enum TokenType{
     GREATER_EQUAL,
     NOT_EQUAL,
     IDENTIFIER,
+    SEMICOLON,
     NUM,
     STRING,
     VAR,
@@ -48,6 +49,7 @@ static std::map<TokenType , std::string> TokenTypeMap = {
     {STRING, "string"},
     {VAR, "var"},
     {PRINT, "print"},
+    {SEMICOLON, "semicolon"},
 };
 class Token{
     private:
