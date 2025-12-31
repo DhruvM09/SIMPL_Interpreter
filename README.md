@@ -3,6 +3,7 @@ SIMPL stands for Simply Interpreted Mathematical Programming Language.A hobby in
 
 # Features
 - Tokenizer
+- line by line Top down Parsing for mathematical Experssions
 
 # How to Run
 1. clone repository
