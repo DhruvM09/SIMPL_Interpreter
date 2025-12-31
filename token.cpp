@@ -32,3 +32,7 @@ void Token::print(){
     }
     std::cout << '\n';
 }
+
+Token::Token(){
+
+}

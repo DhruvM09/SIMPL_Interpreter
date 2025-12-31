@@ -4,7 +4,7 @@
 #include <vector>
 #include "token.h"
 #include "scanner.h"
-
+#include "rdparser.h"
 
 void runfile(std::string filename){
     std::ifstream inputFile(filename);
@@ -17,19 +17,24 @@ void runfile(std::string filename){
     std::vector<std::string> lines;
     while(std::getline(inputFile , line)){
         lines.push_back(line);
-    }
-    // scan tokens
-    Scanner scanner;
-    std::vector<Token> tokens = scanner.scanlines(lines); 
-    
-    
-    // for(auto t : tokens){
-    //     t.print();
-    // }
-
+        std::vector<std::string> curline;
+        curline.push_back(line);
+        // scan tokens
+        Scanner scanner;
+        std::vector<Token> tokens = scanner.scanlines(curline); 
+        //print
+        // for(auto t : tokens){
+        //     t.print();
+        // }
+        
     //parser
-
+    Parser parser(tokens);
+    parser.Parse();
+    }
     
+    
+    
+
 }
 
 int main(int argc , char ** argv){

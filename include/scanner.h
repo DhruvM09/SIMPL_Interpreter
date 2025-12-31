@@ -10,7 +10,6 @@ class Scanner{
         int lineNumber = 0;
 
 
-    
     char peek();
     char Advance();
     bool check(char c);

@@ -50,17 +50,18 @@ static std::map<TokenType , std::string> TokenTypeMap = {
     {VAR, "var"},
     {PRINT, "print"},
     {SEMICOLON, "semicolon"},
+    {ENDOFFILE, "endoffile"},
 };
 class Token{
-    private:
+    public:
     int lineNum;
     TokenType type;
     float NumValue;
     std::string StringValue;
-    public:
     Token(TokenType type, int lineNum);
     Token(TokenType type , float NumValue , int lineNum);
     Token(TokenType type , std::string StringValue , int lineNum);
+    Token();
 
     void print();
 };

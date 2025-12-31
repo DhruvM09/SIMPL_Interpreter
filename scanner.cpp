@@ -13,6 +13,7 @@ std::vector<Token> Scanner::scanlines(std::vector<std::string> & lines){
         std::vector<Token> temp = Scanner::scanline();
         for(Token t : temp)tokens.push_back(t);
     }
+    tokens.push_back(CreateTokenSymbol(ENDOFFILE , lineNumber));
     return tokens;
 
 }
