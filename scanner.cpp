@@ -13,7 +13,7 @@ std::vector<Token> Scanner::scanlines(std::vector<std::string> & lines){
         std::vector<Token> temp = Scanner::scanline();
         for(Token t : temp)tokens.push_back(t);
     }
-    tokens.push_back(CreateTokenSymbol(ENDOFFILE , lineNumber));
+    // tokens.push_back(CreateTokenSymbol(ENDOFFILE , lineNumber));
     return tokens;
 
 }
@@ -89,15 +89,18 @@ std::vector<Token> Scanner::scanline(){
             tokens.push_back(CreateTokenSymbol(LEFT_BRACE,lineNumber));
         break;
         case '}':
-            tokens.push_back(CreateTokenSymbol(RIGHT_PARA,lineNumber));
+            tokens.push_back(CreateTokenSymbol(RIGHT_BRACE,lineNumber));
         break;
         case ';':
             tokens.push_back(CreateTokenSymbol(SEMICOLON , lineNumber));
         break;
 
         case '\0':
+        break;
         case '\n':
+        break;
         case ' ':
+        break;
         default:
             if(std::isalnum(c)){
                 std::string value;
@@ -108,7 +111,20 @@ std::vector<Token> Scanner::scanline(){
                 }
                 if(std::isalpha(c)){
                     // if first was letter then its a string identifier or keyword 
-                    tokens.push_back(CreateTokenString(IDENTIFIER , value,lineNumber));
+                    bool found = 0;
+                    for(auto keyword : TokenTypeMap){
+                        if(value == keyword.second){
+                            found =1;
+                            //it is keyword;
+                            tokens.push_back(CreateTokenSymbol(keyword.first,lineNumber));
+                            break;
+                        }
+                    }
+                    
+                    if(!found){
+                        //identifier
+                        tokens.push_back(CreateTokenString(IDENTIFIER , value,lineNumber));
+                    }
                 }else{
                     //else it is a number
                     float val = std::stof(value);

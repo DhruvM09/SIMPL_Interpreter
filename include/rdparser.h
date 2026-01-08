@@ -1,6 +1,7 @@
 #include "token.h"
 #include <vector>
 
+
 class expr{
 
     expr(){
@@ -11,15 +12,22 @@ class expr{
 
 class Parser{
     private:
-    std::vector<Token> tokens;
     Token token;
-    int current;
-
+    TokenType baseType;// type of declaration
+    int exprType; // if / while / etc..
+    
     public:
+    int current;
     Parser(std::vector<Token> & tokens);
+    Parser();
     void Parse();
+    std::vector<Token> tokens;
 
     private:
+    void program();
+    void globals();
+    void variables();
+    void statement();
     void match(TokenType tt);
     float expression();
     float factor();

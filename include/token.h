@@ -24,8 +24,9 @@ enum TokenType{
     STRING,
     VAR,
     PRINT,
-    SET,
+    FUNC,
     LOOP,
+    IF,
     ENDOFFILE
 };
 static std::map<TokenType , std::string> TokenTypeMap = {
@@ -45,11 +46,13 @@ static std::map<TokenType , std::string> TokenTypeMap = {
     {GREATER_EQUAL , "greater_equal"},
     {NOT_EQUAL ,"not_equal"},
     {IDENTIFIER ,"identifier"},
-    {NUM, "num"},
-    {STRING, "string"},
+    {NUM, "NUM"},
+    {STRING, "STRING"},
     {VAR, "var"},
     {PRINT, "print"},
     {SEMICOLON, "semicolon"},
+    {FUNC, "func"},
+    {IF, "if"},
     {ENDOFFILE, "endoffile"},
 };
 class Token{
@@ -66,3 +69,12 @@ class Token{
     void print();
 };
 
+
+class SymbolTableStorage{
+    public:
+        TokenType TokenClass;
+        std::string name;
+        TokenType type;
+        std::string StringValue;
+        float NumValue;
+};

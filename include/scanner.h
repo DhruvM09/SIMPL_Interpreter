@@ -1,11 +1,14 @@
+#pragma once
 #include "token.h"
 #include <vector>
 #include <string>
+#include <map>
 
 class Scanner{
     private:
     std::string currentLine;
     int current;
+
     public:
         int lineNumber = 0;
 

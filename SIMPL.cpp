@@ -14,25 +14,25 @@ void runfile(std::string filename){
     }
     // read line by line
     std::string line;
+    Scanner scanner;
     std::vector<std::string> lines;
     while(std::getline(inputFile , line)){
         lines.push_back(line);
         std::vector<std::string> curline;
         curline.push_back(line);
         // scan tokens
-        Scanner scanner;
-        std::vector<Token> tokens = scanner.scanlines(curline); 
-        //print
+    }
+    
+         std::vector<Token> tokens = scanner.scanlines(lines); 
         // for(auto t : tokens){
         //     t.print();
         // }
-        
-    //parser
-    Parser parser(tokens);
-    parser.Parse();
-    }
-    
-    
+       
+        //parser
+        Parser parser(tokens);
+        parser.Parse();
+
+   
     
 
 }

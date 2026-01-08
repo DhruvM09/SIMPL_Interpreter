@@ -1,3 +1,12 @@
-2+3
-3+1
-1+1
+var y = -1
+var x = 2 + 3*y
+print x
+print "hello world"
+if(x){                    // this will be true
+    print "inside if"
+}
+print "outside if"
+if(y){                    // this will be false
+    print "in 2nd if"
+}
+print "outside 2nd if"
